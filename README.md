@@ -79,3 +79,86 @@ Configure the application-dev.yml under the folder `code` by setting your own co
 - -u:  int, the upper bound of number of vertices of output subgraph
 - -w: bool, the output where one frequent subgraph appears in database
 
+## Examples (ST-CDG)
+```
+t # <graph-id>
+v <node-id> <node-name-id> <node-name> 
+e <node-name-id # node-name-id # Relationship> 
+m <commit-id>  // This is the commit id for core commit
+c <commit-id> <changed code entities> 
+F <commit-id> <changed files>
+```
+Here is an example in Tomcat
+```
+t # 9
+v 0 F1429 java/org/apache/tomcat/util/net/AbstractJsseEndpoint.java
+v 1 M19282 java/org/apache/tomcat/util/net/SecureNioChannel.java#FSecureNioChannel#Thandshake(boolean,boolean)#M
+v 2 M21749 java/org/apache/tomcat/util/compat/Jre9Compat.java#FJre9Compat#TsetApplicationProtocols(SSLParameters,String[])#M
+v 3 M19244 java/org/apache/tomcat/util/net/SecureNio2Channel.java#FSecureNio2Channel#ThandshakeInternal(boolean)#M
+v 4 M21752 java/org/apache/tomcat/util/compat/JreCompat.java#FJreCompat#TgetApplicationProtocol(SSLEngine)#M
+v 5 F1299 java/org/apache/tomcat/util/compat/Jre9Compat.java
+v 6 M18737 java/org/apache/tomcat/util/net/AbstractJsseEndpoint.java#FAbstractJsseEndpoint#TcreateSSLEngine(String,List<Cipher>,List<String>)#M
+v 7 F1300 java/org/apache/tomcat/util/compat/JreCompat.java
+v 8 M21750 java/org/apache/tomcat/util/compat/JreCompat.java#FJreCompat#TsetApplicationProtocols(SSLParameters,String[])#M
+v 9 V0 org.apache.tomcat.util.compat.Jre9Compat.setApplicationProtocolsMethod
+v 10 V1 org.apache.tomcat.util.compat.Jre9Compat.m2
+v 11 V2 org.apache.tomcat.util.compat.JreCompat.sm
+v 12 F1448 java/org/apache/tomcat/util/net/SecureNio2Channel.java
+v 13 F1449 java/org/apache/tomcat/util/net/SecureNioChannel.java
+e M19244#M21752#CALL
+e F1300#V2#CONTAIN
+e F1449#M19282#CONTAIN
+e F1299#V1#CONTAIN
+e F1448#M19244#CONTAIN
+e M19282#M21752#CALL
+e M18737#M21750#CALL
+e F1299#F1300#EXTENDS
+e F1299#M21749#CONTAIN
+e F1300#M21750#CONTAIN
+e F1299#V0#CONTAIN
+e F1300#M21752#CONTAIN
+e F1429#M18737#CONTAIN
+m tomcat(d4fb4f8d1fa021d0d0b290a7ef034eae33973f94)
+c tomcat(d4fb4f8d1fa021d0d0b290a7ef034eae33973f94) #M21750#V0#V1#M21749#V2
+c tomcat(9c25b79b0240d6362e8051996af3e3a8456cd9b6) 
+c tomcat(2a0a6d0bb1e0c6cfcbd3c61054dc2db53de2e2b3) #M21752
+c tomcat(c8dcfee6333a0d5d677403cc80665b262dbc73de) 
+c tomcat(04a5e59a6b03a4aa1d411eabf1f1d8f5a1f6d1e3) 
+c tomcat(a77346f90db4895d4a80db146ebf0d75ff074762) 
+c tomcat(5ac9eaf7144ce1f8d21955f0fb4e4f5e6d84c91d) #M19282#M18737#M19244
+c tomcat(c35cd4bf5e3affd1454e3708d02b783ce91660ed) 
+f tomcat(d4fb4f8d1fa021d0d0b290a7ef034eae33973f94) #F1299#F1300
+f tomcat(9c25b79b0240d6362e8051996af3e3a8456cd9b6) 
+f tomcat(2a0a6d0bb1e0c6cfcbd3c61054dc2db53de2e2b3) #F1299#F1300
+f tomcat(c8dcfee6333a0d5d677403cc80665b262dbc73de) 
+f tomcat(04a5e59a6b03a4aa1d411eabf1f1d8f5a1f6d1e3) 
+f tomcat(a77346f90db4895d4a80db146ebf0d75ff074762) 
+f tomcat(5ac9eaf7144ce1f8d21955f0fb4e4f5e6d84c91d) #F1429#F1448#F1449
+f tomcat(c35cd4bf5e3affd1454e3708d02b783ce91660ed) 
+```
+- t # 9: the index of ST-CDG
+- v:  node id, 
+- e: 
+
+## Examples (CPC-G)
+```
+t # <graph-id>
+v <node-id> <Relationship> 
+e <node-id> <node-id> <lable_L1@L2> <file_0> <file_1> <file_2> <time_diff>
+i <the original id of ST-CDG>  
+```
+Here is an example in Tomcat
+```
+t # 8
+v 0 CALL
+v 1 CALL
+v 2 CALL
+v 3 EXTENDS
+e 0 1 A@CF 1300#java/org/apache/tomcat/util/compat/JreCompat.java 1448#java/org/apache/tomcat/util/net/SecureNio2Channel.java 1429#java/org/apache/tomcat/util/net/AbstractJsseEndpoint.java 22607.33 d4fb4f8d1fa021d0d0b290a7ef034eae33973f94#2a0a6d0bb1e0c6cfcbd3c61054dc2db53de2e2b3#5ac9eaf7144ce1f8d21955f0fb4e4f5e6d84c91d
+e 1 3 A@CF 1300#java/org/apache/tomcat/util/compat/JreCompat.java 1429#java/org/apache/tomcat/util/net/AbstractJsseEndpoint.java 1299#java/org/apache/tomcat/util/compat/Jre9Compat.java 658.67 d4fb4f8d1fa021d0d0b290a7ef034eae33973f94#2a0a6d0bb1e0c6cfcbd3c61054dc2db53de2e2b3#5ac9eaf7144ce1f8d21955f0fb4e4f5e6d84c91d
+e 0 2 A@CF 1300#java/org/apache/tomcat/util/compat/JreCompat.java 1448#java/org/apache/tomcat/util/net/SecureNio2Channel.java 1449#java/org/apache/tomcat/util/net/SecureNioChannel.java 658.67 2a0a6d0bb1e0c6cfcbd3c61054dc2db53de2e2b3#5ac9eaf7144ce1f8d21955f0fb4e4f5e6d84c91d
+e 1 2 A@CF 1300#java/org/apache/tomcat/util/compat/JreCompat.java 1429#java/org/apache/tomcat/util/net/AbstractJsseEndpoint.java 1449#java/org/apache/tomcat/util/net/SecureNioChannel.java 22607.33 d4fb4f8d1fa021d0d0b290a7ef034eae33973f94#2a0a6d0bb1e0c6cfcbd3c61054dc2db53de2e2b3#5ac9eaf7144ce1f8d21955f0fb4e4f5e6d84c91d
+e 2 3 A@CF 1300#java/org/apache/tomcat/util/compat/JreCompat.java 1449#java/org/apache/tomcat/util/net/SecureNioChannel.java 1299#java/org/apache/tomcat/util/compat/Jre9Compat.java 658.67 d4fb4f8d1fa021d0d0b290a7ef034eae33973f94#2a0a6d0bb1e0c6cfcbd3c61054dc2db53de2e2b3#5ac9eaf7144ce1f8d21955f0fb4e4f5e6d84c91d
+e 0 3 A@CF 1300#java/org/apache/tomcat/util/compat/JreCompat.java 1448#java/org/apache/tomcat/util/net/SecureNio2Channel.java 1299#java/org/apache/tomcat/util/compat/Jre9Compat.java 658.67 d4fb4f8d1fa021d0d0b290a7ef034eae33973f94#2a0a6d0bb1e0c6cfcbd3c61054dc2db53de2e2b3#5ac9eaf7144ce1f8d21955f0fb4e4f5e6d84c91d
+i 9
+```
