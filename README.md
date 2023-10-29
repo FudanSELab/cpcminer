@@ -84,9 +84,9 @@ Configure the application-dev.yml under the folder `code` by setting your own co
 t # <graph-id>
 v <node-id> <node-name-id> <node-name> 
 e <node-name-id # node-name-id # Relationship> 
-m <commit-id>  // This is the commit id for core commit
-c <commit-id> <changed code entities> 
-F <commit-id> <changed files>
+m <commit-id>  // This is the commit id for the core commit
+c <commit-id> <changed code entities> // Only changed code entities relate to the core entity
+F <commit-id> <changed files> // Only changed files relate to the core file
 ```
 Here is an example in Tomcat
 ```
@@ -136,10 +136,6 @@ f tomcat(a77346f90db4895d4a80db146ebf0d75ff074762)
 f tomcat(5ac9eaf7144ce1f8d21955f0fb4e4f5e6d84c91d) #F1429#F1448#F1449
 f tomcat(c35cd4bf5e3affd1454e3708d02b783ce91660ed) 
 ```
-- t # 9: the index of ST-CDG
-- v:  node id, 
-- e: 
-
 ## Examples (CPC-G)
 ```
 t # <graph-id>
