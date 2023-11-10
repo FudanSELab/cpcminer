@@ -21,8 +21,8 @@ This repo provides  the replication package for the paper (Baidu Netdisk: the [l
 * **neo4j_dataset**: the neo4j dataset contains entity-level software relationship graphs and change information from over 5,032 versions of five well-maintained projects. 
 * **mapping**: the data for code entity mapping.
 * **graph**: the generated ST-CDGs, CPC-Gs, FCPCs.
-* **manual_study**: the manual validation data. 
-* **result**:  the basic information about the studied projects, the mined frequent change propagation channels (FCPCs), e.g., the top 40 FCPCs, all 243FCPCs.
+* **rq_manual_study**: the manual validation data. 
+* **rq_result**:  the basic information about the studied projects, the mined frequent change propagation channels (FCPCs), e.g., the top 40 FCPCs, all 243FCPCs.
 
 
 
