@@ -14,7 +14,7 @@ Please feel free to contact Daihong Zhou(dhzhou17 at fudan dot edu dot cn) for t
 
 
 
-This repo provides  the replication package for the paper (Baidu Netdisk: the [links](https://pan.baidu.com/s/1kxYhFxe3wgp2-YwAcMFWQw) , and the password：c3v0). It includes the following folders:
+This repo provides  the replication package for the paper. Due to the huge size of the dataset, it has been uploaded to a cloud storage service for easier access and distribution (Baidu Netdisk: the [links](https://pan.baidu.com/s/1kxYhFxe3wgp2-YwAcMFWQw) , and the password：c3v0). It includes the following folders:
 
 * **code**:  the tool CPCMiner.  
 * **project**: the git repository used in this study. 
